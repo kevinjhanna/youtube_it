@@ -126,7 +126,7 @@ class YouTubeIt
 
       # *Fixnum*:: Number of comments for this video
       attr_reader :comment_count
-      
+
       # *String*:: State of the video (processing, restricted, deleted, rejected and failed)
       attr_reader :state
 
@@ -135,7 +135,13 @@ class YouTubeIt
 
       # *Boolean*:: Whether or not a video is private. Non-standard name to avoid collision with Rubys own 'private' stuff.
       attr_reader :perm_private
- 
+
+      # *String*:: The type of license, it may be "cc" (creative commons) or "youtube" (youtube license).
+      attr_reader :license
+
+      # *String*:: The raw xml response from YouTube API call.
+      attr_reader :raw_xml
+
       # Geodata
       attr_reader :position
       attr_reader :latitude

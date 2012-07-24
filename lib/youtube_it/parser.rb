@@ -441,6 +441,10 @@ class YouTubeIt
           widescreen = media_group.at_xpath("yt:aspectRatio").text == 'widescreen' ? true : false
         end
 
+        unless media_group.at_xpath("media:license").nil?
+          license = media_group.at_xpath("media:license").text
+        end
+
         media_content = []
         media_group.xpath("media:content").each do |mce|
           media_content << parse_media_content(mce)
@@ -545,7 +549,9 @@ class YouTubeIt
           :state          => state,
           :insight_uri    => insight_uri,
           :unique_id      => ytid,
-          :perm_private   => perm_private)
+          :perm_private   => perm_private,
+          :license        => license,
+          :raw_xml        => entry.to_xml)
       end
 
       def parse_media_content (elem)

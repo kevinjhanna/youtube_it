@@ -25,10 +25,11 @@ class YouTubeIt
       attr_reader :uploader
       attr_reader :region
       attr_reader :paid_content
+      attr_reader :license
       attr_reader :location
       attr_reader :location_radius
-      
-      
+
+
       def initialize(params={})
         # Initialize our various member data to avoid warnings and so we'll
         # automatically fall back to the youtube api defaults
@@ -36,7 +37,7 @@ class YouTubeIt
         @offset, @query,
         @response_format, @video_format,
         @safe_search, @author, @lang,
-        @duration, @time, @hd, @caption,
+        @duration, @time, @hd, @caption, @license,
         @uploader, @region, @location, @location_radius, @paid_content = nil
         @url = base_url
         @dev_key = params[:dev_key] if params[:dev_key]
@@ -81,6 +82,7 @@ class YouTubeIt
           'time' => @time,
           'hd' => @hd,
           'caption' => @caption,
+          'license' => @license,
           'region' => @region,
           'location' => @location,
           'location-radius' => @location_radius,
